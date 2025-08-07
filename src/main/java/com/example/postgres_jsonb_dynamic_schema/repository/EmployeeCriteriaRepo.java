@@ -133,8 +133,19 @@ public class EmployeeCriteriaRepo {
                                         employeeRoot.get("metadata"),
                                         criteriaBuilder.literal(key)
                                 );
+                                Double numericValue = null;
+                                if (filterValue instanceof Number) {
+                                    numericValue = ((Number)filterValue).doubleValue();
+                                } else if (filterValue instanceof String) {
+                                    numericValue = Double.valueOf((String) filterValue);
+                                }
 
-                                predicates.add(criteriaBuilder.lessThanOrEqualTo(jsonValueAsDouble, Double.valueOf((String) filterValue)));
+                                if (numericValue != null) {
+                                    predicates.add(criteriaBuilder.equal(jsonValueAsDouble, numericValue));
+                                }
+                                break;
+
+                                //predicates.add(criteriaBuilder.equal(jsonValueAsDouble, Double.valueOf((String) filterValue)));
                             }
                             case "boolean": {
                                 Expression<String> jsonValue = criteriaBuilder.function(
@@ -197,7 +208,19 @@ public class EmployeeCriteriaRepo {
                                     criteriaBuilder.literal(key)
                             );
 
-                            predicates.add(criteriaBuilder.greaterThan(jsonValueAsDouble, Double.valueOf((String) filterValue)));
+                            Double numericValue = null;
+                            if (filterValue instanceof Number) {
+                                numericValue = ((Number)filterValue).doubleValue();
+                            } else if (filterValue instanceof String) {
+                                numericValue = Double.valueOf((String) filterValue);
+                            }
+
+                            if (numericValue != null) {
+                                predicates.add(criteriaBuilder.greaterThan(jsonValueAsDouble, numericValue));
+                            }
+                            break;
+
+                            //predicates.add(criteriaBuilder.greaterThan(jsonValueAsDouble, Double.valueOf((String) filterValue)));
                         }
                     }
                     break;
@@ -217,7 +240,18 @@ public class EmployeeCriteriaRepo {
                                         criteriaBuilder.literal(key)
                                 );
 
-                                predicates.add(criteriaBuilder.greaterThanOrEqualTo(jsonValueAsDouble, Double.valueOf((String) filterValue)));
+                                Double numericValue = null;
+                                if (filterValue instanceof Number) {
+                                    numericValue = ((Number)filterValue).doubleValue();
+                                } else if (filterValue instanceof String) {
+                                    numericValue = Double.valueOf((String) filterValue);
+                                }
+
+                                if (numericValue != null) {
+                                    predicates.add(criteriaBuilder.greaterThanOrEqualTo(jsonValueAsDouble, numericValue));
+                                }
+                                break;
+                                //predicates.add(criteriaBuilder.greaterThanOrEqualTo(jsonValueAsDouble, Double.valueOf((String) filterValue)));
                             }
                         }
                         break;
@@ -237,7 +271,19 @@ public class EmployeeCriteriaRepo {
                                         criteriaBuilder.literal(key)
                                 );
 
-                                predicates.add(criteriaBuilder.lessThan(jsonValueAsDouble, Double.valueOf((String) filterValue)));
+                                Double numericValue = null;
+                                if (filterValue instanceof Number) {
+                                    numericValue = ((Number)filterValue).doubleValue();
+                                } else if (filterValue instanceof String) {
+                                    numericValue = Double.valueOf((String) filterValue);
+                                }
+
+                                if (numericValue != null) {
+                                    predicates.add(criteriaBuilder.lessThan(jsonValueAsDouble, numericValue));
+                                }
+                                break;
+
+                                //predicates.add(criteriaBuilder.lessThan(jsonValueAsDouble, Double.valueOf((String) filterValue)));
                             }
                         }
                         break;
@@ -256,8 +302,18 @@ public class EmployeeCriteriaRepo {
                                         employeeRoot.get("metadata"),
                                         criteriaBuilder.literal(key)
                                 );
+                                Double numericValue = null;
+                                if (filterValue instanceof Number) {
+                                    numericValue = ((Number)filterValue).doubleValue();
+                                } else if (filterValue instanceof String) {
+                                    numericValue = Double.valueOf((String) filterValue);
+                                }
 
-                                predicates.add(criteriaBuilder.lessThanOrEqualTo(jsonValueAsDouble, Double.valueOf((String) filterValue)));
+                                if (numericValue != null) {
+                                    predicates.add(criteriaBuilder.lessThanOrEqualTo(jsonValueAsDouble, numericValue));
+                                }
+                                break;
+                                //predicates.add(criteriaBuilder.lessThanOrEqualTo(jsonValueAsDouble, Double.valueOf((String) filterValue)));
                             }
                         }
                         break;
